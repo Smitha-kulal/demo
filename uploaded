@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>
+            upload file
+        </title>
+    </head>
+    <body>
+        <form action="up.php" method="POST" enctype="multipart/form-data">
+            SELECT FILE<input type="file" name="file" id="file">
+            <button type="submit" name="submit" value="Upload" class="btn">Upload</button>
+        </form>
+
+        <br>
+        <table style="width:100%;">
+          <tr>
+            <th>File Id</th>
+            <th>File Name</th>
+          </tr>
+          <?php
+          $con= new mysqli("sql6.freesqldatabase.com","sql6414256","HPAdV5nHNn","sql6414256");
+          $query="SELECT File_ID,Filename FROM upload";
+          $result=mysqli_query($con,$query);
+          while($row=mysqli_fetch_array($result))
+          {
+             echo "<tr><td>" . $row['File_ID'] . "</td><td>" . $row['Filename'] . "</td></tr>";
+          }
+        
+        ?>
+      </table>
+
+
+    </body>
+</html>
